@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% extends 'web_page/sidebar.html' %}
+    {% load static %}
+    {% block body_block %}
+
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- ===================== KEY MANAGEMENT ===================== -->
+<div class="container-fluid py-5">
+    <section class="container my-5">
+        <h4 class=" mb-3">Key Management</h4>
+
+        <p>This section discusses how keys are managed between POS Terminals or other Payment Channels. The system has
+            support for Master Key Session and Derived Unique Key Per Transaction (DUKPT).</p>
+
+        <h5 class="text-secondary mt-4">For Master Key session, the following are the keys to be exchanged:</h5>
+        <ul>
+            <li><strong>Clear Terminal Master Key (CTMK):</strong> This key is transmitted in clear form and injected
+                into the POS Terminal or other Payment Channels. This can be generated for a group of POS Terminals. A
+                group could be a logical grouping by Payment Terminal Service Provider (PTSP) or Merchant Acquirers.
+            </li>
+            <li><strong>Encrypted Terminal Master Key (TMK):</strong> This key is transmitted in encrypted form to the
+                POS Terminal or other Payment Channels. This is not injected into terminal manually. This is requested
+                for online by the POS Terminal when it is being setup or if it is suspected that the key has been
+                compromised. TMK is encrypted with CTMK.</li>
+            <li><strong>Encrypted Terminal PIN Key (TPK):</strong> This key is usually transmitted in encrypted form to
+                the POS Terminal or other Payment Channels. This is not injected into the terminal manually. POS
+                terminal requests online for this key at predefined time from the CTMS. TPK is encrypted with the TMK.
+                At transaction, this key is used to encrypt the PIN block if it is sent in the message.</li>
+            <li><strong>Encrypted Terminal Session Key (TSK):</strong> This key is usually transmitted in encrypted form
+                to the POS Terminal or other Payment Channels. This is not injected into terminal manually. POS Terminal
+                requests online for this key at predefined time from the CTMS. TSK is encrypted with TMK.</li>
+        </ul>
+
+        <p>At transaction, this key is used for seeding the algorithm for generating hash value in DE64 or DE128.</p>
+
+        <h5 class="text-secondary mt-4">For DUKPT, the following are the keys to be exchanged:</h5>
+        <ul>
+            <li><strong>Clear Terminal Master Key (CTMK):</strong> This key is transmitted in clear form and injected
+                into the POS Terminal or other Payment Channels. This can be generated for a group of POS Terminals. A
+                group could be a logical grouping by Payment Terminal Service Provider (PTSP) or Merchant Acquirers.
+            </li>
+            <li><strong>Encrypted Terminal Master Key (TMK):</strong> This key is transmitted in encrypted form to the
+                POS Terminal or other Payment Channels. This is not injected into terminal manually. This is requested
+                for online by the POS Terminal when it is being setup or if it is suspected that the key has been
+                compromised. TMK is encrypted with CTMK.</li>
+            <li><strong>Base Derivation Key (BDK):</strong> This key is NOT transmitted to the POS Terminal. In clear
+                form it is injected into the POS Terminal or other Payment Channels in two components manually. This can
+                be generated for a group of POS Terminals.</li>
+            <li><strong>Encrypted Terminal Session Key (TSK):</strong> This key is usually transmitted in encrypted form
+                to the POS Terminal or other Payment Channels. This is not injected into terminal manually. POS Terminal
+                requests online for this key at predefined time from the CTMS. TSK is encrypted with TMK. At
+                transaction, this key is used for seeding the algorithm for generating hash value in DE64 or DE128.</li>
+            <li><strong>Encrypted Initial PIN Encryption Key (IPEK) for Track 2 Data:</strong> This key is usually
+                transmitted in encrypted form to the POS Terminal or other Payment Channels. This is not injected into
+                terminal manually. POS Terminal requests online for this key at predefined time from the CTMS. IPEK is
+                encrypted with TMK.</li>
+            <li><strong>Encrypted Initial PIN Encryption Key (IPEK) for EMV:</strong> This key is usually transmitted in
+                encrypted form to the POS Terminal or other Payment Channels. This is not injected into terminal
+                manually. POS Terminal requests online for this key at predefined time from the CTMS. IPEK is encrypted
+                with TMK.</li>
+        </ul>
+    </section>
+</div>
+  {% endblock %}

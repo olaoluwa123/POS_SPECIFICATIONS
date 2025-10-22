@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% extends 'web_page/sidebar.html' %}
+    {% load static %}
+    {% block body_block %}
+
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+       
+    </style>
+
+
+<body>
+   
+    <div class="container-fluid py-5">
+
+        <!-- Title -->
+        <div class="text-center mb-5">
+            <h1 class="fw-bold text-primary">POS Interface Specification Document</h1>
+            <p class="text-muted">Central Terminal Management System Integration</p>
+        </div>
+
+        <!-- Introduction -->
+        <div class="card p-4">
+            <div class="section-header">
+                <h2>Introduction</h2>
+            </div>
+            <p>This specification document covers the interface specifications that must be supported by POS Terminals
+                or other Payment Channels to integrate with Central Terminal Management System (CTMS). It contains
+                definitions for all messages and the data elements (or fields) transmitted between the POS Terminals or
+                other Payment Channels and CTMS.</p>
+        </div>
+        <!-- Acronyms and Abbreviations -->
+        <div class="card p-4">
+            <div class="section-header">
+                <h2>Acronyms and Abbreviations</h2>
+            </div>
+            <table class="table table-bordered table-striped">
+                <tbody>
+                    <tr>
+                        <th scope="row">NCS</th>
+                        <td>Nigeria Central Switch</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">ATM</th>
+                        <td>Automated Teller Machine</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">POS</th>
+                        <td>Point of Sale Machine</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">CMS</th>
+                        <td>Card Management System</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">CTMS</th>
+                        <td>Central Terminal Management System</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endblock%}

@@ -1,0 +1,3215 @@
+<!DOCTYPE html>
+{% extends 'web_page/sidebar.html' %}
+    {% load static %}
+    {% block body_block %}
+
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<body>
+<div class="container-fluid py-5">
+        <!-- ===================== DATA ELEMENT DEFINITION ===================== -->
+        <section class="container my-5 ">
+            <h3 class="text-center  mb-4">DATA ELEMENT DEFINITION</h3>
+            <p class="text-center">The following ISO Data Elements are supported by the Interface.</p>
+        </section>
+
+        <!-- ===================== FIELD #2 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #2 – Primary Account Number</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2</td>
+                        <td>LLVAR</td>
+                        <td>n ..19</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>A number identifying the cardholder and the card issuer. Typically, this number is embossed on the front
+                of the card and encoded on Track 2 of the magnetic stripe.</p>
+        </section>
+
+        <!-- ===================== FIELD #3 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #3 – Processing Code</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>3</td>
+                        <td>an 6</td>
+                        <td>Fixed</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>The customer transaction type and the account types, if any, affected by the transaction. This is a fixed
+                length field consisting of 3 data elements:</p>
+            <ul>
+                <li><strong>Transaction type:</strong> Positions 1–2</li>
+                <li><strong>Account type affected (debit/inquiry or “from” account):</strong> Positions 3–4</li>
+                <li><strong>Account type affected (credit or “to” account):</strong> Positions 5–6</li>
+            </ul>
+
+            <h5 class="text-secondary mt-4">Transaction Type Codes</h5>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Code</th>
+                        <th>Description</th>
+                        <th>Message Type Identifier (MTI)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>00</td>
+                        <td>Purchase</td>
+                        <td>0200</td>
+                    </tr>
+                    <tr>
+                        <td>01</td>
+                        <td>Cash Advance</td>
+                        <td>0200</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>Refund / Return</td>
+                        <td>0200</td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td>Deposit</td>
+                        <td>0200</td>
+                    </tr>
+                    <tr>
+                        <td>09</td>
+                        <td>Purchase with Cash Back</td>
+                        <td>0200</td>
+                    </tr>
+                    <tr>
+                        <td>31</td>
+                        <td>Balance Inquiry</td>
+                        <td>0100</td>
+                    </tr>
+                    <tr>
+                        <td>30</td>
+                        <td>Link Account Inquiry</td>
+                        <td>0100</td>
+                    </tr>
+                    <tr>
+                        <td>39</td>
+                        <td>Mini Statement</td>
+                        <td>0100</td>
+                    </tr>
+                    <tr>
+                        <td>40</td>
+                        <td>Fund Transfer</td>
+                        <td>0200</td>
+                    </tr>
+                    <tr>
+                        <td>48</td>
+                        <td>Bill Payments</td>
+                        <td>0200</td>
+                    </tr>
+                    <tr>
+                        <td>4A</td>
+                        <td>Prepaid</td>
+                        <td>0200</td>
+                    </tr>
+                    <tr>
+                        <td>4B</td>
+                        <td>Biller List Download</td>
+                        <td>0800</td>
+                    </tr>
+                    <tr>
+                        <td>4C</td>
+                        <td>Product List Download</td>
+                        <td>0800</td>
+                    </tr>
+                    <tr>
+                        <td>4D</td>
+                        <td>Biller Subscription Information Download</td>
+                        <td>0800</td>
+                    </tr>
+                    <tr>
+                        <td>4E</td>
+                        <td>Payment Validation</td>
+                        <td>0800</td>
+                    </tr>
+                    <tr>
+                        <td>4F</td>
+                        <td>Purchase with Additional Data</td>
+                        <td>0200</td>
+                    </tr>
+                    <tr>
+                        <td>60</td>
+                        <td>POS Pre-Authorization</td>
+                        <td>0100</td>
+                    </tr>
+                    <tr>
+                        <td>61</td>
+                        <td>POS Pre-Authorization Completion</td>
+                        <td>0200</td>
+                    </tr>
+                    <tr>
+                        <td>90</td>
+                        <td>PIN Change</td>
+                        <td>0100</td>
+                    </tr>
+                    <tr>
+                        <td>9A</td>
+                        <td>Terminal Master Key</td>
+                        <td>0800</td>
+                    </tr>
+                    <tr>
+                        <td>9B</td>
+                        <td>Terminal Session Key</td>
+                        <td>0800</td>
+                    </tr>
+                    <tr>
+                        <td>9G</td>
+                        <td>Terminal PIN Key</td>
+                        <td>0800</td>
+                    </tr>
+                    <tr>
+                        <td>9I</td>
+                        <td>Initial PIN Encryption Key Download – Track 2 Data</td>
+                        <td>0800</td>
+                    </tr>
+                    <tr>
+                        <td>9J</td>
+                        <td>Initial PIN Encryption Key Download – EMV</td>
+                        <td>0800</td>
+                    </tr>
+                    <tr>
+                        <td>9C</td>
+                        <td>Terminal Parameter Download</td>
+                        <td>0800</td>
+                    </tr>
+                    <tr>
+                        <td>9D</td>
+                        <td>Call Home</td>
+                        <td>0800</td>
+                    </tr>
+                    <tr>
+                        <td>9E</td>
+                        <td>CA Public Key Download</td>
+                        <td>0800</td>
+                    </tr>
+                    <tr>
+                        <td>9F</td>
+                        <td>EMV Application AID Download</td>
+                        <td>0800</td>
+                    </tr>
+                    <tr>
+                        <td>9H</td>
+                        <td>Daily Transaction Report Download</td>
+                        <td>0800</td>
+                    </tr>
+                    <tr>
+                        <td>9K</td>
+                        <td>Dynamic Currency Conversion</td>
+                        <td>0800</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5 class="text-secondary mt-4">Account Type Codes</h5>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Code</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>00</td>
+                        <td>Default – unspecified</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Savings</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>Current</td>
+                    </tr>
+                    <tr>
+                        <td>30</td>
+                        <td>Credit</td>
+                    </tr>
+                    <tr>
+                        <td>40</td>
+                        <td>Universal Account</td>
+                    </tr>
+                    <tr>
+                        <td>50</td>
+                        <td>Investment Account</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ===================== FIELD #4 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #4 – Amount, Transaction</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>4</td>
+                        <td>n 12</td>
+                        <td>Fixed</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>This field contains the transaction amount in the transaction currency. This amount is expressed in
+                lowest denominations.</p>
+        </section>
+
+        <!-- ===================== FIELD #7 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #7 – Transmission Date and Time</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>7</td>
+                        <td>MMDDhhmmss</td>
+                        <td>n 10</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>The date and time, expressed in Coordinated Universal Time (UTC), when this message is sent by the
+                message initiator.</p>
+        </section>
+
+        <!-- ===================== FIELD #11 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #11 – System Trace Audit Number</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>11</td>
+                        <td>n 6</td>
+                        <td>Fixed</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>A number assigned by a transaction originator to assist in identifying a transaction uniquely. The
+                systems trace audit number remains unchanged for all messages within a transaction.</p>
+        </section>
+
+        <!-- ===================== FIELD #12 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #12 – Time, Local Transaction</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12</td>
+                        <td>hhmmss</td>
+                        <td>n 6</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>The local time at which the transaction takes place at the card acceptor location in authorization and
+                financial messages. For all other transactions, this field indicates the local time set by the initiator
+                of the first message of the transaction.</p>
+        </section>
+
+        <!-- ===================== FIELD #13 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #13 – Date, Local Transaction</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>13</td>
+                        <td>MMDD</td>
+                        <td>n 4</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>The local date at which the transaction takes place at the card acceptor location in authorization and
+                financial messages. For all other transactions, this field indicates the local date set by the initiator
+                of the first message of the transaction.</p>
+        </section>
+
+        <!-- ===================== FIELD #14 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #14 – Date, Expiration</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>14</td>
+                        <td>YYMM</td>
+                        <td>n 4</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>The year and month after which the card expires.</p>
+        </section>
+
+        <!-- ===================== FIELD #15 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #15 – Date, Settlement</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>15</td>
+                        <td>MMDD</td>
+                        <td>n 4</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>The month and day for which financial totals are reconciled between the acquirer and the issuer.</p>
+        </section>
+        <!-- ===================== FIELD #18 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #18 – Merchant Type</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>18</td>
+                        <td>n 4</td>
+                        <td>Fixed</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>The classification of the merchant’s type of business product or service. Codes to be developed within
+                each country.</p>
+        </section>
+
+        <!-- ===================== FIELD #22 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #22 – POS Entry Mode</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>22</td>
+                        <td>n 3</td>
+                        <td>Fixed</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>A series of codes that identify the actual method used to capture the account number and expiry date when
+                a terminal is used, and the PIN capture capability of the terminal. This is a fixed length field
+                consisting of 2 data elements:</p>
+            <ul>
+                <li><strong>PAN entry mode (positions 1 - 2)</strong>
+                    <ul>
+                        <li>00 – Unknown</li>
+                        <li>01 – Manual (i.e keypad)</li>
+                        <li>02 – Magnetic Stripe (possibly constructed manually, CVV may be checked)</li>
+                        <li>03 – Barcode</li>
+                        <li>04 – OCR</li>
+                        <li>05 – ICC (CVV may be checked)</li>
+                        <li>07 – Auto - entry via contactless ICC</li>
+                        <li>90 – Magnetic strip as read from track 2</li>
+                        <li>91 – Auto - entry via contactless magnetic stripe 95 – ICC (CVV may not be checked)</li>
+                    </ul>
+                </li>
+                <li><strong>PIN entry capability (position 3)</strong>
+                    <ul>
+                        <li>0 – Unknown</li>
+                        <li>1 – Terminal can accept PIN</li>
+                        <li>2 – Terminal cannot accept PIN</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <!-- ===================== FIELD #23 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #23 – Card Sequence number</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>23</td>
+                        <td>n 3</td>
+                        <td>Fixed</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>A number distinguishing between separate cards with the same primary account number or primary account
+                number extended.</p>
+        </section>
+
+        <!-- ===================== FIELD #25 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #25 – POS Condition Code</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>25</td>
+                        <td>n 2</td>
+                        <td>Fixed</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>A code that describes the condition under which the transaction takes place at the Point-Of-Service.</p>
+
+            <table class="table table-striped table-bordered align-middle text-center mt-3">
+                <thead class="table-light">
+                    <tr>
+                        <th>Code</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>00</td>
+                        <td>Normal presentment</td>
+                    </tr>
+                    <tr>
+                        <td>01</td>
+                        <td>Customer not present</td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>Unattended terminal - card can be retained</td>
+                    </tr>
+                    <tr>
+                        <td>03</td>
+                        <td>Merchant suspicious</td>
+                    </tr>
+                    <tr>
+                        <td>04</td>
+                        <td>Electronic Cash Register interface</td>
+                    </tr>
+                    <tr>
+                        <td>05</td>
+                        <td>Customer present, card not present</td>
+                    </tr>
+                    <tr>
+                        <td>06</td>
+                        <td>Pre-authorized request</td>
+                    </tr>
+                    <tr>
+                        <td>07</td>
+                        <td>Telephone device required</td>
+                    </tr>
+                    <tr>
+                        <td>08</td>
+                        <td>Mail/telephone order</td>
+                    </tr>
+                    <tr>
+                        <td>09</td>
+                        <td>POS security alert</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Customer identity verified</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Suspected fraud</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Security reasons</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>Representation of item</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>Public utility terminal</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>Customer's terminal</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>Administrative terminal</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>Returned item</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>No check in envelope – return</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>Deposit out of balance – return</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>Payment out of balance – return</td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td>Manual reversal</td>
+                    </tr>
+                    <tr>
+                        <td>22</td>
+                        <td>Terminal error – counted</td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td>Terminal error - not counted</td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td>Deposit out of balance – apply</td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td>Payment out of balance – apply</td>
+                    </tr>
+                    <tr>
+                        <td>26</td>
+                        <td>Withdrawal error – reversed</td>
+                    </tr>
+                    <tr>
+                        <td>27</td>
+                        <td>Unattended terminal - card cannot be retained</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Additional codes can be defined for private use.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ===================== FIELD #26 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #26 – POS PIN Capture Code</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>26</td>
+                        <td>n 2</td>
+                        <td>Fixed</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>The maximum number of PIN characters that can be accepted by the Point-of-Service device.</p>
+            <p>Valid values are "04" to "12" ("00" to "03" are reserved by ISO) and if the POS device does not accept
+                PINs or it is unknown whether the device does, this value should be set to "12".</p>
+        </section>
+
+
+        <!-- ===================== DATA ELEMENT DEFINITION (CONTINUED) ===================== -->
+
+        <!-- ===================== FIELD #28 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #28 – Amount, Transaction Fee</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>28</td>
+                        <td>x + n 8</td>
+                        <td>Fixed</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>A fee charged by the acquirer to the issuer for transaction activity, in the currency of the amount,
+                transaction.</p>
+        </section>
+
+        <!-- ===================== FIELD #30 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #30 – Amount, Transaction Processing Fee</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>30</td>
+                        <td>x + n 8</td>
+                        <td>Fixed</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>A fee charged by the network for the handling and routing of messages, in the currency of amount,
+                transaction. This field is usually inserted by the network into the applicable messages.</p>
+        </section>
+
+        <!-- ===================== FIELD #32 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #32 – Acquiring Institution Identification Code</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>32</td>
+                        <td>LLVAR</td>
+                        <td>an..11</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>A code identifying the financial institution acting as the acquirer of this customer transaction. The
+                acquirer is the member or system user that signed the merchant, installed the ATM or dispensed cash.
+                This field usually contains the BIN (see PAN) of the acquirer, but could be any other number assigned to
+                it by the relevant authorities.</p>
+            <p>When a processing center operates for multiple acquirers, this is the code for the individual member or
+                system user, not a code for the processing center.</p>
+        </section>
+
+        <!-- ===================== FIELD #33 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #33 – Forwarding Institution Identification Code</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>33</td>
+                        <td>LLVAR</td>
+                        <td>n..11</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>A code identifying the institution that forwards the transaction in an interchange system en route to the
+                card issuer. For example, an acquirer routing a transaction via a third-party EFT switch to the card
+                issuer. In the request from the acquirer to the EFT switch, this field contains the code of the
+                acquirer. When the request is forwarded by the EFT switch to the card issuer, this field contains the
+                code assigned to the EFT switch.</p>
+        </section>
+
+        <!-- ===================== FIELD #35 ===================== -->
+        <section class="mb-5">
+            <h4 class=" mb-3">Field #35 – Track 2 Data</h4>
+
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th scope="row">Field No</th>
+                        <td>35</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Format</th>
+                        <td>LLVARjavascript:ActivePopup.CurrentURL=self.location;ActivePopup.Target='DataElementFormat.htm';ActivePopup.SizeX=300;ActivePopup.SizeY=200;ActivePopup.DoClick();
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Attr</th>
+                        <td>z..37</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>
+                The information encoded on Track 2 of the magnetic stripe as defined in ISO 7813, including field
+                separators but excluding the begin sentinel, end sentinel and longitudinal redundancy check characters.
+                The field separator (FS) can be either a "=" or a "D" character. The layout of this field is as follows:
+            </p>
+
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th scope="row">Field</th>
+                        <td>Length</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Primary account number</th>
+                        <td>up to 19 digits</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Field separator</th>
+                        <td>1 digit</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Expiry date (YYMM)</th>
+                        <td>4 digits (or a field separator if not present)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Service restriction code</th>
+                        <td>3 digits (or a field separator if not present)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Discretionary data</th>
+                        <td>balance of available digits</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>
+                The primary account number, expiry date and service restriction code fields are described in further
+                detail under fields 2, 14 and 40 in this document.
+            </p>
+        </section>
+
+
+
+        <!-- ===================== FIELD #37 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #37 – Retrieval Reference Number</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>37</td>
+                        <td>an 12</td>
+                        <td>Fixed</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>A reference number supplied by the system retaining the original source information and used to assist in
+                locating that information or a copy thereof.</p>
+        </section>
+
+        <!-- ===================== FIELD #38 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #38 – Authorization Code</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>38</td>
+                        <td>n 6</td>
+                        <td>Fixed</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>A code assigned by the authorizing institution indicating approval.</p>
+        </section>
+
+        <!-- ===================== FIELD #39 ===================== -->
+        <section class="container my-5">
+            <h4 class=" mb-3">Field #39 – Response Code</h4>
+            <table class="table table-striped table-bordered align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Field No</th>
+                        <th>Format</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>39</td>
+                        <td>an 2</td>
+                        <td>Fixed</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>A code that defines the disposition of a transaction.</p>
+
+            <table class="table table-striped table-bordered align-middle text-center mt-3">
+                <thead class="table-light">
+                    <tr>
+                        <th>Code</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>00</td>
+                        <td>Approved or completed successfully</td>
+                    </tr>
+                    <tr>
+                        <td>01</td>
+                        <td>Refer to card issuer</td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>Refer to card issuer, special condition</td>
+                    </tr>
+                    <tr>
+                        <td>03</td>
+                        <td>Invalid merchant</td>
+                    </tr>
+                    <tr>
+                        <td>04</td>
+                        <td>Pick-up card</td>
+                    </tr>
+                    <tr>
+                        <td>05</td>
+                        <td>Do not honor</td>
+                    </tr>
+                    <tr>
+                        <td>06</td>
+                        <td>Error</td>
+                    </tr>
+                    <tr>
+                        <td>07</td>
+                        <td>Pick-up card, special condition</td>
+                    </tr>
+                    <tr>
+                        <td>08</td>
+                        <td>Honor with identification</td>
+                    </tr>
+                    <tr>
+                        <td>09</td>
+                        <td>Request in progress</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Approved, partial</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Approved, VIP</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Invalid transaction</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>Invalid amount</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>Invalid card number</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>No such issuer</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>Approved, update track 3</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>Customer cancellation</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>Customer dispute</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>Re-enter transaction</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>Invalid response</td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td>No action taken</td>
+                    </tr>
+                    <tr>
+                        <td>22</td>
+                        <td>Suspected malfunction</td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td>Unacceptable transaction fee</td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td>File update not supported</td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td>Unable to locate record</td>
+                    </tr>
+                    <tr>
+                        <td>26</td>
+                        <td>Duplicate record</td>
+                    </tr>
+                    <tr>
+                        <td>27</td>
+                        <td>File update edit error</td>
+                    </tr>
+                    <tr>
+                        <td>28</td>
+                        <td>File update file locked</td>
+                    </tr>
+                    <tr>
+                        <td>29</td>
+                        <td>File update failed</td>
+                    </tr>
+                    <tr>
+                        <td>30</td>
+                        <td>Format error</td>
+                    </tr>
+                    <tr>
+                        <td>31</td>
+                        <td>Bank not supported</td>
+                    </tr>
+                    <tr>
+                        <td>32</td>
+                        <td>Completed partially</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td>Expired card, pick-up</td>
+                    </tr>
+                    <tr>
+                        <td>34</td>
+                        <td>Suspected fraud, pick-up</td>
+                    </tr>
+                    <tr>
+                        <td>35</td>
+                        <td>Contact acquirer, pick-up</td>
+                    </tr>
+                    <tr>
+                        <td>36</td>
+                        <td>Restricted card, pick-up</td>
+                    </tr>
+                    <tr>
+                        <td>37</td>
+                        <td>Call acquirer security, pick-up</td>
+                    </tr>
+                    <tr>
+                        <td>38</td>
+                        <td>PIN tries exceeded, pick-up</td>
+                    </tr>
+                    <tr>
+                        <td>39</td>
+                        <td>No credit account</td>
+                    </tr>
+                    <tr>
+                        <td>40</td>
+                        <td>Function not supported</td>
+                    </tr>
+                    <tr>
+                        <td>41</td>
+                        <td>Lost card</td>
+                    </tr>
+                    <tr>
+                        <td>42</td>
+                        <td>No universal account</td>
+                    </tr>
+                    <tr>
+                        <td>43</td>
+                        <td>Stolen card</td>
+                    </tr>
+                    <tr>
+                        <td>44</td>
+                        <td>No investment account</td>
+                    </tr>
+                    <tr>
+                        <td>51</td>
+                        <td>Not sufficient funds</td>
+                    </tr>
+                    <tr>
+                        <td>52</td>
+                        <td>No check account</td>
+                    </tr>
+                    <tr>
+                        <td>53</td>
+                        <td>No savings account</td>
+                    </tr>
+                    <tr>
+                        <td>54</td>
+                        <td>Expired card</td>
+                    </tr>
+                    <tr>
+                        <td>55</td>
+                        <td>Incorrect PIN</td>
+                    </tr>
+                    <tr>
+                        <td>56</td>
+                        <td>No card record</td>
+                    </tr>
+                    <tr>
+                        <td>57</td>
+                        <td>Transaction not permitted to cardholder</td>
+                    </tr>
+                    <tr>
+                        <td>58</td>
+                        <td>Transaction not permitted on terminal</td>
+                    </tr>
+                    <tr>
+                        <td>59</td>
+                        <td>Suspected fraud</td>
+                    </tr>
+                    <tr>
+                        <td>60</td>
+                        <td>Contact acquirer</td>
+                    </tr>
+                    <tr>
+                        <td>61</td>
+                        <td>Exceeds withdrawal limit</td>
+                    </tr>
+                    <tr>
+                        <td>62</td>
+                        <td>Restricted card</td>
+                    </tr>
+                    <tr>
+                        <td>63</td>
+                        <td>Security violation</td>
+                    </tr>
+                    <tr>
+                        <td>64</td>
+                        <td>Original amount incorrect</td>
+                    </tr>
+                    <tr>
+                        <td>65</td>
+                        <td>Exceeds withdrawal frequency</td>
+                    </tr>
+                    <tr>
+                        <td>66</td>
+                        <td>Call acquirer security</td>
+                    </tr>
+                    <tr>
+                        <td>67</td>
+                        <td>Hard capture</td>
+                    </tr>
+                    <tr>
+                        <td>68</td>
+                        <td>Response received too late</td>
+                    </tr>
+                    <tr>
+                        <td>75</td>
+                        <td>PIN tries exceeded</td>
+                    </tr>
+                    <tr>
+                        <td>77</td>
+                        <td>Intervene, bank approval required</td>
+                    </tr>
+                    <tr>
+                        <td>78</td>
+                        <td>Intervene, bank approval required for partial amount</td>
+                    </tr>
+                    <tr>
+                        <td>90</td>
+                        <td>Cut-off in progress</td>
+                    </tr>
+                    <tr>
+                        <td>91</td>
+                        <td>Issuer or switch inoperative</td>
+                    </tr>
+                    <tr>
+                        <td>92</td>
+                        <td>Routing error</td>
+                    </tr>
+                    <tr>
+                        <td>93</td>
+                        <td>Violation of law</td>
+                    </tr>
+                    <tr>
+                        <td>94</td>
+                        <td>Duplicate transaction</td>
+                    </tr>
+                    <tr>
+                        <td>95</td>
+                        <td>Reconcile error</td>
+                    </tr>
+                    <tr>
+                        <td>96</td>
+                        <td>System malfunction</td>
+                    </tr>
+                    <tr>
+                        <td>98</td>
+                        <td>Exceeds cash limit</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+
+        
+
+    
+    <!-- ===================== FIELD #40 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #40 – Service Restriction Code</h4>
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>40</td>
+                    <td>N3</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>An identification of geographic/service availability. Contains:</p>
+
+        <h5 class="text-secondary mt-4">The area of usage and whether the card has additional read facilities</h5>
+        <ul>
+            <li>1 – International card</li>
+            <li>2 – International card – integrated circuit facilities</li>
+            <li>5 – National use only</li>
+            <li>6 – National use only – integrated circuit facilities</li>
+            <li>9 – Test card – online authorization mandatory</li>
+        </ul>
+
+        <h5 class="text-secondary mt-4">The authorization processing requirements for this card</h5>
+        <ul>
+            <li>0 – Normal authorization</li>
+            <li>2 – Online authorization mandatory</li>
+            <li>4 – Online authorization mandatory</li>
+        </ul>
+
+        <h5 class="text-secondary mt-4">The range of services available and PIN requirements</h5>
+        <ul>
+            <li>0 – PIN required</li>
+            <li>1 – No restrictions – normal cardholder verification</li>
+            <li>2 – Goods and services only</li>
+            <li>3 – PIN required, ATM only</li>
+            <li>5 – PIN required, goods and services only at POS, cash at ATM</li>
+            <li>6 – PIN required if PIN pad present</li>
+            <li>7 – PIN required if PIN pad present, goods and services only at POS, cash at ATM</li>
+        </ul>
+    </section>
+
+    <!-- ===================== FIELD #41 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #41 – Card Acceptor Terminal Identification</h4>
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>41</td>
+                    <td>ans 8</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <p>A unique code identifying a terminal at the card acceptor location.</p>
+    </section>
+
+    <!-- ===================== FIELD #42 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #42 – Card Acceptor Identification Code</h4>
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>42</td>
+                    <td>ans 15</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <p>A code identifying the card acceptor (typically a merchant).</p>
+    </section>
+
+    <!-- ===================== FIELD #43 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #43 – Card Acceptor Name / Location</h4>
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>43</td>
+                    <td>ans 40</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <p>The name and location of the card acceptor (such as a merchant or an ATM). This is a fixed length field
+            consisting of 4 data elements:</p>
+        <ul>
+            <li>The location information (positions 1 - 23), exclusive of city, state and country</li>
+            <li>The city (positions 24 - 36) in which the Point-of-Service is located</li>
+            <li>The state (positions 37 - 38) in which the Point-of-Service is located</li>
+            <li>The country (positions 39 - 40) in which the Point-of-Service is located</li>
+        </ul>
+    </section>
+
+    <!-- ===================== FIELD #48 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #48 – Additional Data</h4>
+
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>48</td>
+                    <td>LLVAR</td>
+                    <td>ans...999</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Used to provide linked account or mini-statement information for a linked account inquiry or a mini-statement
+            inquiry.</p>
+
+        <h5 class="text-secondary mt-4">Mini–Statement Information</h5>
+        <p>The format for field 48 when mini-statement data is to be sent downstream is as follows:</p>
+
+        <p>A mini-statement heading line, containing tags to identify the format of the mini-statement data lines that
+            follow, e.g.</p>
+        <p><code>DATE_TIME|SEQ_NR|TRAN_TYPE|TRAN_AMOUNT~</code></p>
+
+        <p>The different fields of the mini-statement heading line are separated by bar characters ("|") and the line is
+            terminated by a tilde character ("~").</p>
+
+        <p>One or more mini-statement data lines, each similar to the identifying string above in structure, but
+            containing the actual transaction data to be printed per line, e.g.</p>
+        <p><code>19971201123123|001234|01|000000005000~</code></p>
+
+        <p>Below is a list of tags supported:</p>
+
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field</th>
+                    <th>Tag Name</th>
+                    <th>Format</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sequence number</td>
+                    <td>SEQ_NR</td>
+                    <td>n6</td>
+                </tr>
+                <tr>
+                    <td>Date and time</td>
+                    <td>DATE_TIME</td>
+                    <td>n14, CCYYMMDDhhmmss</td>
+                </tr>
+                <tr>
+                    <td>Terminal ID</td>
+                    <td>TERM_ID</td>
+                    <td>n8</td>
+                </tr>
+                <tr>
+                    <td>Transaction type</td>
+                    <td>TRAN_TYPE</td>
+                    <td>n2</td>
+                </tr>
+                <tr>
+                    <td>From account</td>
+                    <td>FROM_ACC</td>
+                    <td>n2</td>
+                </tr>
+                <tr>
+                    <td>To account</td>
+                    <td>TO_ACC</td>
+                    <td>n2</td>
+                </tr>
+                <tr>
+                    <td>Transaction amount</td>
+                    <td>TRAN_AMOUNT</td>
+                    <td>n12</td>
+                </tr>
+                <tr>
+                    <td>Account ID 1</td>
+                    <td>ACC_ID1</td>
+                    <td>ans28</td>
+                </tr>
+                <tr>
+                    <td>Account ID 2</td>
+                    <td>ACC_ID2</td>
+                    <td>ans28</td>
+                </tr>
+                <tr>
+                    <td>Authorization ID</td>
+                    <td>AUTH_ID</td>
+                    <td>n6</td>
+                </tr>
+                <tr>
+                    <td>Currency code</td>
+                    <td>CURR_CODE</td>
+                    <td>n3 (Currency code of the Transaction Amount field)</td>
+                </tr>
+                <tr>
+                    <td>Surcharge</td>
+                    <td>SURCHARGE</td>
+                    <td>n8</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h5 class="text-secondary mt-4">Linked Account Inquiry</h5>
+        <p>
+            In the case of a linked account inquiry, this field contains information relating to the accounts linked to
+            the card that initiated the transaction. The information for up to 20 accounts can be returned.
+            Note that when "00" is specified as an account type in the original request, a list of all accounts linked
+            to the card is retrieved, and not only the linked accounts of the default account type.
+            The format of the information associated with each account is as follows:
+        </p>
+
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field</th>
+                    <th>Length</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Account ID</td>
+                    <td>28</td>
+                    <td>The identifier uniquely identifying the account, left justified, space-filled.</td>
+                </tr>
+                <tr>
+                    <td>Account type</td>
+                    <td>2</td>
+                    <td>The ISO 8583 account type of the account.</td>
+                </tr>
+                <tr>
+                    <td>Currency code</td>
+                    <td>3</td>
+                    <td>The ISO numeric currency code of the account.</td>
+                </tr>
+                <tr>
+                    <td>Ledger balance</td>
+                    <td>13</td>
+                    <td>The ledger balance of the account. The first character contains the sign. A "D" indicates a
+                        debit (negative) balance and a "C" indicates a credit (positive) balance.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <!-- ===================== FIELD #49 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #49 – Currency Code, Transaction</h4>
+
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>49</td>
+                    <td>n</td>
+                    <td>3</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            The local currency of the acquirer or source location of the transaction. This is the currency code used for
+            the following amount fields:
+        </p>
+        <ul>
+            <li>amount, transaction</li>
+            <li>amount, transaction fee</li>
+            <li>amount, transaction processing fee</li>
+        </ul>
+    </section>
+
+    <!-- ===================== FIELD #52 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #52 – PIN Data</h4>
+
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>52</td>
+                    <td>Hex16</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            The PIN data field contains the PIN (a number assigned to a cardholder intended to uniquely identify that
+            cardholder) of the cardholder formatted into a 64-bit block and encrypted with a DES key.
+        </p>
+    </section>
+
+    <!-- ===================== FIELD #53 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #53 – Security Related Control Information</h4>
+
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>53</td>
+                    <td>Hex96</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            Identifies security management information used in the current transaction or specifies security management
+            information to be used in future transactions.
+        </p>
+
+        <p>In PIN change transactions, the first byte indicates the PIN to change:</p>
+        <ul>
+            <li>binary 0 – insecure PIN (e.g. telephone PIN)</li>
+            <li>binary 1 – secure PIN (e.g. ATM PIN)</li>
+        </ul>
+
+        <p>
+            The following 8 bytes of this field contain the new PIN formatted into a 64-bit block and encrypted with a
+            DES key.
+        </p>
+
+        <p>
+            In key change transactions, this field contains the encrypted key in the first 8-24 bytes (8 for single, 16
+            for double, 24 for triple length), followed by a 3-byte key check value (i.e. the first 3 bytes of a clear
+            value of all zeroes encrypted with the key).
+        </p>
+    </section>
+
+    <!-- ===================== FIELD #54 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #54 – Additional Amounts</h4>
+
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>54</td>
+                    <td>LLLVAR</td>
+                    <td>an…120</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            Information on up to 6 amounts and related account data for which specific data elements have not been
+            defined. Each amount is a fixed length field consisting of 5 data elements:
+        </p>
+
+        <ul>
+            <li>Account type (positions 1 - 2)</li>
+            <li>Amount type (positions 3 - 4)</li>
+            <li>Currency code (positions 5 - 7)</li>
+            <li>Amount sign (position 8) - "C" or "D"</li>
+            <li>Amount (position 9 - 20)</li>
+        </ul>
+
+        <p>
+            When this field is sent by the entity that performed currency conversion this field should contain amounts
+            in the transaction and settlement currencies if they differ.
+        </p>
+        <p>
+            In a response message from the NCS, this field will always contain the approved amounts and cash amounts, if
+            applicable.
+        </p>
+    </section>
+
+    <!-- ===================== FIELD #55 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #55 – Integrated Circuit Card System Related Data</h4>
+
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>55</td>
+                    <td>LLLVAR</td>
+                    <td>ANS..510</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            This data element contains EMV data. This EMV data in this data element is structured in the following
+            manner:
+        </p>
+        <p><code>&lt;2-or-4-character Tag&gt;&lt;2-character length field&gt;&lt;variable length data&gt;</code></p>
+
+        <p>
+            The 2-byte or 4-byte tag is an EMV tag (in hexadecimal format) that uniquely identifies the data content of
+            the P-55 fields, and the 2-digit length field defines the length of the variable-length data that follows
+            it.
+            The length specifies the number of hexadecimal values represented in the data part, the actual string is
+            twice as long as the length specifies.
+        </p>
+
+        <p>
+            The format of the length field is binary converted to a hexadecimal string, e.g., 0x1F would be represented
+            as “1F”. A tag identifying the type of data, followed immediately by a two-digit length (LL) identifying the
+            length of the data, followed immediately by the data itself.
+        </p>
+
+        <p>
+            The variable length data for a tag cannot exceed the maximum specified length specified for the data. When
+            the variable length data is longer than the defined maximum length for the tag value, it is truncated.
+        </p>
+
+        <p>The following table describes each of the EMV tags that can be carried in the P-55 data element:</p>
+
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>EMV Tag</th>
+                    <th>Description</th>
+                    <th>Max Length</th>
+                    <th>TDE</th>
+                    <th>Required</th>
+                    <th>Request</th>
+                    <th>Response</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>9F26</td>
+                    <td>Authorization Request</td>
+                    <td>H8</td>
+                    <td>EMV Request</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>9F27</td>
+                    <td>Cryptogram Information Data</td>
+                    <td>H1</td>
+                    <td>EMV Request</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>9F10</td>
+                    <td>Issuer Application Discretionary data</td>
+                    <td>32</td>
+                    <td>EMV</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>9F37</td>
+                    <td>Unpredictable Number</td>
+                    <td>H4</td>
+                    <td>EMV Request</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>9F36</td>
+                    <td>Application Transaction Counter</td>
+                    <td>H2</td>
+                    <td>EMV Request</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>95</td>
+                    <td>Terminal Verification Result</td>
+                    <td>H5</td>
+                    <td>EMV Request</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>9A</td>
+                    <td>Transaction Date</td>
+                    <td>H3</td>
+                    <td>EMV Request</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>9C</td>
+                    <td>Transaction Type</td>
+                    <td>H1</td>
+                    <td>EMV Request</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>9F02</td>
+                    <td>Transaction Amount</td>
+                    <td>H6</td>
+                    <td>EMV Request</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>5F2A</td>
+                    <td>Transaction Currency Code</td>
+                    <td>H2</td>
+                    <td>EMV Request</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>N/A</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <!-- ===================== FIELD #82 – EMV and Related Data Elements ===================== -->
+    <section class="container my-5">
+
+
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>EMV Tag</th>
+                    <th>Description</th>
+                    <th>Max Length</th>
+                    <th>TDE</th>
+                    <th>Required (Request)</th>
+                    <th>Required (Response)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>82</td>
+                    <td>Application Interchange Profile</td>
+                    <td>H2</td>
+                    <td>EMV</td>
+                    <td>Y</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>9F1A</td>
+                    <td>Terminal Country Code</td>
+                    <td>H2</td>
+                    <td>EMV</td>
+                    <td>Y</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>9F34</td>
+                    <td>Cardholder Verification Method Results</td>
+                    <td>H4</td>
+                    <td>EMV</td>
+                    <td>N</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>9F33</td>
+                    <td>Terminal Capabilities</td>
+                    <td>H3</td>
+                    <td>EMV</td>
+                    <td>N</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>9F35</td>
+                    <td>Terminal Type</td>
+                    <td>H1</td>
+                    <td>EMV</td>
+                    <td>N</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>9F1E</td>
+                    <td>Interface Device Serial Number</td>
+                    <td>H8</td>
+                    <td>EMV</td>
+                    <td>N</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>84</td>
+                    <td>Dedicated File Name</td>
+                    <td>H16</td>
+                    <td>EMV</td>
+                    <td>N</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>9F09</td>
+                    <td>Application Version Number</td>
+                    <td>H2</td>
+                    <td>EMV</td>
+                    <td>N</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>9F03</td>
+                    <td>Amount, other</td>
+                    <td>H6</td>
+                    <td>EMV</td>
+                    <td>N</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>5F34</td>
+                    <td>Application PAN Sequence Number</td>
+                    <td>H1</td>
+                    <td>EMV Status</td>
+                    <td>N</td>
+                    <td>N</td>
+                </tr>
+                <tr>
+                    <td>91</td>
+                    <td>Issuer Authentication Data</td>
+                    <td>H32</td>
+                    <td>EMV</td>
+                    <td>N/A</td>
+                    <td>N</td>
+                </tr>
+                <tr>
+                    <td>71</td>
+                    <td>Issuer Script</td>
+                    <td>H128</td>
+                    <td>EMV Script</td>
+                    <td>N/A</td>
+                    <td>N</td>
+                </tr>
+                <tr>
+                    <td>72</td>
+                    <td>Issuer Script</td>
+                    <td>H128</td>
+                    <td>EMV Script</td>
+                    <td>N/A</td>
+                    <td>N</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ===================== FIELD #56 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #56 – Message Reason Code</h4>
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>56</td>
+                    <td>LLLVAR</td>
+                    <td>n..4</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>A code that provides the receiver of a request, advice or notification message with the reason, or purpose of
+            that message.</p>
+
+        <p>For original authorizations and financial transactions, it identifies why the type of message was sent (e.g.
+            why an advice versus a request); for other messages, it states why this action was taken.</p>
+
+        <table class="table table-striped table-bordered align-middle text-center mt-3">
+            <thead class="table-light">
+                <tr>
+                    <th>Code</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1003</td>
+                    <td>Card issuer unavailable</td>
+                </tr>
+                <tr>
+                    <td>1006</td>
+                    <td>Under floor limit</td>
+                </tr>
+                <tr>
+                    <td>1376</td>
+                    <td>PIN verification failure</td>
+                </tr>
+                <tr>
+                    <td>1377</td>
+                    <td>Change dispensed</td>
+                </tr>
+                <tr>
+                    <td>1378</td>
+                    <td>IOU receipt printed</td>
+                </tr>
+                <tr>
+                    <td>1510</td>
+                    <td>Over floor limit</td>
+                </tr>
+                <tr>
+                    <td>1800</td>
+                    <td>Negative card</td>
+                </tr>
+                <tr>
+                    <td>4000</td>
+                    <td>Customer cancellation</td>
+                </tr>
+                <tr>
+                    <td>4001</td>
+                    <td>Unspecified, no action taken</td>
+                </tr>
+                <tr>
+                    <td>4004</td>
+                    <td>Completed partially</td>
+                </tr>
+                <tr>
+                    <td>4021</td>
+                    <td>Timeout waiting for response</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>For place hold on card transactions, in Issuer File Update Advice (0322) or Administration (0600/0620)
+            messages, it states why a card should be put on the hotcard list:</p>
+
+        <table class="table table-striped table-bordered align-middle text-center mt-3">
+            <thead class="table-light">
+                <tr>
+                    <th>Code</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>3000</td>
+                    <td>Lost card</td>
+                </tr>
+                <tr>
+                    <td>3001</td>
+                    <td>Stolen card</td>
+                </tr>
+                <tr>
+                    <td>3002</td>
+                    <td>Undelivered card</td>
+                </tr>
+                <tr>
+                    <td>3003</td>
+                    <td>Counterfeit card</td>
+                </tr>
+                <tr>
+                    <td>3700</td>
+                    <td>Lost PIN</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>If a hold response code has not been specified in these transactions, the message reason code field will be
+            used to determine which hold response code to use for the transaction. A message reason code of "3001 -
+            Stolen card" will result in a hold response code of "43 - Stolen card", otherwise "41 - Lost card" will be
+            used.</p>
+
+        <p>In the case of a message to bank transaction, the message reason code specifies the type of message the
+            cardholder wants to forward to the issuer. Note that in this case, the message reason code field is treated
+            as a free-format field that the user can use for any user specific code.</p>
+
+        <p>Message reason codes are defined in the ISO 8583 (1993) specification, and this specification has been used
+            as basis for the codes defined here.</p>
+    </section>
+
+    <!-- ===================== FIELD #59 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #59 – Echo Data</h4>
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>59</td>
+                    <td>LLLVAR</td>
+                    <td>ans…255</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Contains data from the originator of the message that shall be returned unaltered in the response message.
+        </p>
+    </section>
+
+    <!-- ===================== FIELD #60 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #60 – Payment Information</h4>
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>60</td>
+                    <td>LLLVAR</td>
+                    <td>ans…999</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>This data element contains information relating to bills payments and token (recharge cards, tickets etc)
+            purchases. This data element carries tagged data items. The tags defined for this data element are as listed
+            in the table below:</p>
+
+        <table class="table table-striped table-bordered align-middle text-center mt-3">
+            <thead class="table-light">
+                <tr>
+                    <th>Transaction Type</th>
+                    <th>Tag</th>
+                    <th>Description</th>
+                    <th>Length</th>
+                    <th>Presence Indicator</th>
+                    <th>Request/Response</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Payment for Bills</td>
+                    <td>*41</td>
+                    <td>Biller Identification Code</td>
+                    <td>015</td>
+                    <td>Mandatory</td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td>Payment for Bills</td>
+                    <td>45</td>
+                    <td>Product Identification Code</td>
+                    <td></td>
+                    <td>Conditional</td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td>Payment for Bills</td>
+                    <td>**50</td>
+                    <td>Customer Subscription Information</td>
+                    <td></td>
+                    <td>Mandatory</td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td>Payment for Bills</td>
+                    <td>**50</td>
+                    <td>Customer Subscription Information</td>
+                    <td></td>
+                    <td>Optional</td>
+                    <td>Response</td>
+                </tr>
+                <tr>
+                    <td>Purchase of Token (Recharge Card, ticket etc)</td>
+                    <td>*41</td>
+                    <td>Biller Identification Code</td>
+                    <td>015</td>
+                    <td>Mandatory</td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td>Purchase of Token (Recharge Card, ticket etc)</td>
+                    <td>45</td>
+                    <td>Product Identification Code</td>
+                    <td></td>
+                    <td>Conditional</td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td>Purchase of Token (Recharge Card, ticket etc)</td>
+                    <td>**50</td>
+                    <td>Customer Subscription Information (or products)</td>
+                    <td></td>
+                    <td>Optional</td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td>Purchase of Token (Recharge Card, ticket etc)</td>
+                    <td>****51</td>
+                    <td>Token (e.g. PIN or Voucher)</td>
+                    <td></td>
+                    <td>Conditional</td>
+                    <td>Response</td>
+                </tr>
+                <tr>
+                    <td>Purchase of Token (Recharge Card, ticket etc)</td>
+                    <td>**50</td>
+                    <td>Customer Subscription Information</td>
+                    <td></td>
+                    <td>Optional</td>
+                    <td>Response</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <!-- ===================== FIELD #62 – Private Field, Management Data 1 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #62 – Private Field, Management Data 1</h4>
+
+        <p>This data element carries tagged data items. The tags defined for this data element are listed in the table
+            below. Tagged data items are structured in the following manner: a tag identifying the type of data,
+            followed immediately by a three-digit length (LLL) identifying the length of the data, followed immediately
+            by the data itself.</p>
+
+        <p><strong>Tag + LLL + data.</strong></p>
+
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Transaction Type</th>
+                    <th>Tag</th>
+                    <th>Description</th>
+                    <th>Length</th>
+                    <th>Request/Response</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Terminal Parameter Download</td>
+                    <td>01</td>
+                    <td>POS/Payment Channel Serial Number</td>
+                    <td></td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>02</td>
+                    <td>CTMS Date and Time</td>
+                    <td>014</td>
+                    <td>Response</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>03</td>
+                    <td>Card Acceptor Identification Code</td>
+                    <td>015</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>04</td>
+                    <td>Timeout (maximum time interval to wait for response – in seconds)</td>
+                    <td>002</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>05</td>
+                    <td>Currency Code</td>
+                    <td>003</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>06</td>
+                    <td>Country Code</td>
+                    <td>003</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>07</td>
+                    <td>Call home time (maximum time interval idleness for which a call–home must be done – in hours)
+                    </td>
+                    <td>002</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>52</td>
+                    <td>Merchant Name and Location</td>
+                    <td>040</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>08</td>
+                    <td>Merchant Category Code</td>
+                    <td>004</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Call – Home</td>
+                    <td>01</td>
+                    <td>POS/Payment Channel Serial Number</td>
+                    <td></td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>09</td>
+                    <td>POS/Payment Channel Application Version</td>
+                    <td>003</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>10</td>
+                    <td>POS Terminal/Payment Channel Model</td>
+                    <td>020</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>11</td>
+                    <td>Call – Home Merchant Information/Complaint/Comments</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>12</td>
+                    <td>Communications Service Provider</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Biller List Download</td>
+                    <td>01</td>
+                    <td>POS/Payment Channel Serial Number</td>
+                    <td></td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>*41</td>
+                    <td>Biller Identification Code</td>
+                    <td>015</td>
+                    <td>Response</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>42</td>
+                    <td>Biller Name</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Biller Subscription</td>
+                    <td>01</td>
+                    <td>POS/Payment Channel Serial Number</td>
+                    <td></td>
+                    <td>Request</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <!-- ===================== FIELD #62 (continued) – Management & Download Tags ===================== -->
+    <section class="container my-5">
+
+
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Transaction Type</th>
+                    <th>Tag</th>
+                    <th>Description</th>
+                    <th>Length</th>
+                    <th>Request/Response</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Information Download</td>
+                    <td>*41</td>
+                    <td>Biller Identification Code</td>
+                    <td>015</td>
+                    <td>Response</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>43</td>
+                    <td>Required Information Name</td>
+                    <td></td>
+                    <td>Response</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>44</td>
+                    <td>Default Value</td>
+                    <td></td>
+                    <td>Response</td>
+                </tr>
+
+                <tr>
+                    <td>Product List Download</td>
+                    <td>01</td>
+                    <td>POS/Payment Channel Serial Number</td>
+                    <td></td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>*41</td>
+                    <td>Biller Identification Code</td>
+                    <td>015</td>
+                    <td>Response</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>45</td>
+                    <td>Product Identification Code</td>
+                    <td></td>
+                    <td>Response</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>46</td>
+                    <td>Product Name</td>
+                    <td></td>
+                    <td>Response</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>47</td>
+                    <td>Product Amount</td>
+                    <td>012</td>
+                    <td>Response</td>
+                </tr>
+
+                <tr>
+                    <td>Payment Validation</td>
+                    <td>01</td>
+                    <td>POS/Payment Channel Serial Number</td>
+                    <td></td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>*41</td>
+                    <td>Biller Identification Code</td>
+                    <td>015</td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>***48</td>
+                    <td>Payment Code</td>
+                    <td></td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>***49</td>
+                    <td>Payment Validated Information</td>
+                    <td></td>
+                    <td>Response</td>
+                </tr>
+
+                <tr>
+                    <td>Base Derivation Key (BDK)</td>
+                    <td>01</td>
+                    <td>POS/Payment Channel Serial Number</td>
+                    <td></td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>57</td>
+                    <td>Key Serial Number</td>
+                    <td>020</td>
+                    <td>Request</td>
+                </tr>
+
+                <tr>
+                    <td>Dynamic Currency Conversion</td>
+                    <td>01</td>
+                    <td>POS/Payment Channel Serial Number</td>
+                    <td></td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>58</td>
+                    <td>Cardholder Preferred Currency</td>
+                    <td>003</td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>59</td>
+                    <td>Local Country Currency</td>
+                    <td>003</td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>60</td>
+                    <td>DCC Identification Code</td>
+                    <td>015</td>
+                    <td>Request</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>58</td>
+                    <td>Cardholder Preferred Currency</td>
+                    <td>003</td>
+                    <td>Response</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>60</td>
+                    <td>DCC Identification Code</td>
+                    <td>015</td>
+                    <td>Response</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>61</td>
+                    <td>Rate</td>
+                    <td></td>
+                    <td>Response</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p class="mt-3"><strong>Note:</strong></p>
+        <p class="mb-1">*Tag 41: Biller Identification Code is in the format below:</p>
+        <ul>
+            <li>1st position – transaction type the biller is setup for: Token (e.g. Recharge Card) Sales or Bill
+                Payments</li>
+            <li>2nd – 4th position – VAS Provider Code</li>
+            <li>5th – 8th position – Merchant Category Code</li>
+            <li>9th – 15th position – Unique Number identifying the Biller</li>
+        </ul>
+
+        <p class="mb-1">**Tag 50: Customer Subscription Information, if more than one, it should be separated by ‘||’
+        </p>
+        <p class="mb-1"><em>e.g.</em> name=Halima Eze Ajayi||customerid=00001||prod1=3||prod2=4</p>
+        <p class="mb-1">From the example, name and customerid are values downloaded during Biller Subscription
+            Information Download request and the values the customer entered are after the equals signs. prod1 and prod2
+            are products while values 3 and 4 after the equals signs are the quantities.</p>
+
+        <p class="mb-1">***Tag 48: Payment Code and ***Tag 49: Payment Validated Information can be used
+            interchangeably. Format is same as tag 50.</p>
+        <p class="mb-0">****51: Token, if more than one, should be separated by comma ‘,’</p>
+    </section>
+
+    <!-- ===================== FIELD #63 – Private Field, Management Data 2 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #63 – Private Field, Management Data 2</h4>
+
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>63</td>
+                    <td>LLLLVAR</td>
+                    <td>ans…9999</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>This data element carries tagged data items. The tags defined for this data element are listed in the table
+            below. Tagged data items are structured in the following manner: a tag identifying the type of data,
+            followed immediately by a three-digit length (LLL) identifying the length of the data, followed immediately
+            by the data itself. Each block of data is separated by “~”.</p>
+
+        <p class="mb-0"><strong>Tag + LLL + data.</strong></p>
+    </section>
+    <!-- ===================== EMV FIELD TABLE ===================== -->
+    <section class="container my-5">
+
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Transaction Type</th>
+                    <th>Tag</th>
+                    <th>Description</th>
+                    <th>Length</th>
+                    <th>Request/Response</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>EMV Application Download</td>
+                    <td>01</td>
+                    <td>POS/Payment Channel Serial Number</td>
+                    <td></td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>13</td>
+                    <td>AID Index</td>
+                    <td></td>
+                    <td>Response</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>14</td>
+                    <td>Application Internal Reference Number</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>15</td>
+                    <td>Application Identification Number (EMV AID)</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>16</td>
+                    <td>Match</td>
+                    <td>001</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>17</td>
+                    <td>EMV Application Name</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>18</td>
+                    <td>EMV Application Version</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>19</td>
+                    <td>EMV Application Selection Priority</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>20</td>
+                    <td>EMV DDOL</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>21</td>
+                    <td>EMV TDOL</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>22</td>
+                    <td>EMV TFL Domestic</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>23</td>
+                    <td>EMV TFL International</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>24</td>
+                    <td>EMV Offline Threshold Domestic</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>25</td>
+                    <td>EMV Max Target Domestic</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>26</td>
+                    <td>EMV Max Target International</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>27</td>
+                    <td>EMV Target Percentage Domestic</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>28</td>
+                    <td>EMV Target Percentage International</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>29</td>
+                    <td>Default EMV TAC Value</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>30</td>
+                    <td>EMV TAC Denial</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>31</td>
+                    <td>EMV TAC Online</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>CA Public Key Download</td>
+                    <td>01</td>
+                    <td>POS/Payment Channel Serial Number</td>
+                    <td></td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>32</td>
+                    <td>Certificate Authority (CA) Key Index</td>
+                    <td></td>
+                    <td>Response</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>33</td>
+                    <td>CA Key Internal Reference Number</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>34</td>
+                    <td>CA Key Name</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>35</td>
+                    <td>EMV RID</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>36</td>
+                    <td>Hash Algorithm</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>37</td>
+                    <td>EMV CA PK Modulus</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>38</td>
+                    <td>EMV CA PK Exponent</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>39</td>
+                    <td>EMV CA PK Hash</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>40</td>
+                    <td>Public Key Algorithm</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Daily Transaction Report Download</td>
+                    <td>01</td>
+                    <td>POS/Payment Channel Serial Number</td>
+                    <td></td>
+                    <td>Request</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>53</td>
+                    <td>Transaction Date and Time</td>
+                    <td></td>
+                    <td>Response</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>54</td>
+                    <td>Response Code</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>55</td>
+                    <td>Amount</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>56</td>
+                    <td>Transaction Type</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ===================== FIELD #64 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #64 – Primary Message Hash Value</h4>
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>64</td>
+                    <td>AN</td>
+                    <td>64</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>This data element carries the hash value for the messages subject to no secondary data elements (DE65 through
+            DE128) are included in the message. The algorithm is <strong>SHA-256</strong>. If the message contains
+            secondary data elements, data element DE128 is used to carry the hash value. If the hash value is carried in
+            data element DE128, data element DE64 is not included in the message.</p>
+    </section>
+
+    <!-- ===================== FIELD #90 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #90 – Original Data Elements</h4>
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>90</td>
+                    <td>n 42</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>The data elements contained in the original message intended for transaction matching (e.g. to identify a
+            transaction for correction or reversal). It is a fixed length field consisting of 5 data elements:</p>
+
+        <ul>
+            <li><strong>Original message type (positions 1 - 4)</strong> – the message type identifier of the original
+                message of the transaction being reversed.</li>
+            <li><strong>Original systems trace audit number (positions 5 - 10)</strong> – the system trace audit number
+                of the original message.</li>
+            <li><strong>Original transmission date and time (positions 11 - 20)</strong> – the transmission date and
+                time of the original message.</li>
+            <li><strong>Original acquirer institution ID code (positions 21 - 31)</strong> – the acquirer institution ID
+                code of the original message (right justified with leading zeroes).</li>
+            <li><strong>Original forwarding institution ID code (positions 32 - 42)</strong> – the forwarding
+                institution ID code of the original message (right justified with leading zeroes).</li>
+        </ul>
+    </section>
+
+    <!-- ===================== FIELD #95 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #95 – Replacement Amounts</h4>
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>95</td>
+                    <td>n 42</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>The corrected amounts of a transaction in a partial or full reversal (or the final amounts for the
+            transaction). It is a fixed length field consisting of 4 data elements:</p>
+
+        <ul>
+            <li><strong>Actual amount, transaction (positions 1 - 12)</strong> - the corrected, actual amount of the
+                customer’s transaction, in the currency of the transaction.</li>
+            <li><strong>Actual amount, settlement (positions 13 - 24)</strong> - the corrected, actual amount of the
+                customer’s transaction, in the settlement currency.</li>
+            <li><strong>Actual amount, transaction fee (positions 25 - 33)</strong> - the corrected, actual amount of
+                the fee (in format x + n8) for this customer transaction, in the currency of the transaction.</li>
+            <li><strong>Actual amount, settlement fee (positions 34 - 42)</strong> - the corrected, actual amount of the
+                fee (in format x + n8) for this customer transaction, in the settlement currency.</li>
+        </ul>
+    </section>
+
+    <!-- ===================== FIELD #102 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #102 – Account Identification 1</h4>
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>102</td>
+                    <td>LLVAR</td>
+                    <td>n..28</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>A series of digits and/or characters used to identify a specific account held by the cardholder at the card
+            issuer and if present, shall remain unchanged for the life of the transaction. This field usually contains
+            the description of the "from" account.</p>
+    </section>
+
+    <!-- ===================== FIELD #103 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #103 – Account Identification 2</h4>
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>103</td>
+                    <td>LLVAR</td>
+                    <td>n..28</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>A series of digits and/or characters used to identify a specific account held by the cardholder at the card
+            issuer and if present, shall remain unchanged for the life of the transaction. This field usually contains
+            the description of the "to" account.</p>
+        <p>When used in payment transactions, this field specifies the bank account number of the payee.</p>
+    </section>
+
+    <!-- ===================== FIELD #123 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #123 – POS Data Code</h4>
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>123</td>
+                    <td>LLLVAR</td>
+                    <td>an15</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>The field is used to identify terminal capability, terminal environment and presentation security data. It is
+            used to indicate specific conditions that were present at the time a transaction took place at the
+            Point-of-Service. This field consists of the following sub- fields:</p>
+
+        <p><strong>The card data input capability (position 1) of the terminal. Possible values are:</strong></p>
+        <ul>
+            <li>0 – Unknown</li>
+            <li>1 – Manual, no terminal</li>
+            <li>2 – Magnetic Stripe</li>
+            <li>3 – Barcode</li>
+            <li>4 – OCR</li>
+            <li>5 – Magnetic Stripe, Key Entry and ICC</li>
+            <li>6 – Key Entry</li>
+            <li>7 – Magnetic Stripe and Key Entry</li>
+            <li>8 – Magnetic Stripe and ICC</li>
+            <li>9 – ICC</li>
+            <li>A – Contactless ICC</li>
+            <li>B – Contactless Magnetic Strip</li>
+        </ul>
+
+        <p><strong>The cardholder authentication capability (position 2) of the terminal. Possible values are:</strong>
+        </p>
+        <ul>
+            <li>0 – No electronic authentication</li>
+            <li>1 – PIN</li>
+            <li>2 – Electronic signature analysis</li>
+            <li>3 –Biometric</li>
+            <li>4 –Biographic</li>
+            <li>5 –Electronic authentication inoperative</li>
+            <li>6 –others</li>
+        </ul>
+
+        <p><strong>The card capture capability (position 3) of the terminal. Possible values are:</strong></p>
+        <ul>
+            <li>0 – None</li>
+            <li>1 – Capture</li>
+        </ul>
+
+        <p><strong>The operating environment (position 4) of the terminal. Possible values are:</strong></p>
+        <ul>
+            <li>0 – No terminal use</li>
+            <li>1 – On premise of card acceptor, attended</li>
+            <li>2 – On premise of card acceptor, unattended</li>
+            <li>3 – Off premise of card acceptor, attended</li>
+            <li>4 – Off premise of card acceptor, unattended</li>
+            <li>5 – On premise of cardholder, unattended</li>
+        </ul>
+
+        <p><strong>Indicates whether the cardholder is present (position 5). Possible values are:</strong></p>
+        <ul>
+            <li>0 – Cardholder present</li>
+            <li>1 – Cardholder not present, unspecified</li>
+            <li>2 – Cardholder not present, mail order</li>
+            <li>3 – Cardholder not present, telephone</li>
+            <li>4 – Cardholder not present, standing authorization/recurring transaction</li>
+            <li>5 – Cardholder not present, electronic order</li>
+        </ul>
+
+        <p><strong>Indicates whether the card is present (position 6) Possible values are:</strong></p>
+        <ul>
+            <li>0 – Card not present</li>
+            <li>1 – Card present</li>
+        </ul>
+
+        <p><strong>The actual card data input mode (position 7) of the transaction Possible values are:</strong></p>
+        <ul>
+            <li>0 – Unknown</li>
+            <li>1 – Manual, no terminal</li>
+            <li>2 – Magnetic Stripe</li>
+            <li>3 – Barcode</li>
+            <li>4 – OCR</li>
+            <li>5 – ICC</li>
+            <li>6 – Key Entry</li>
+            <li>7 – Contactless, ICC</li>
+            <li>8 – Contactless, magnetic stripe</li>
+        </ul>
+
+        <p><strong>The actual cardholder authentication method (position 8) of the transaction. Possible values
+                are:</strong></p>
+        <ul>
+            <li>0 – no electronic authentication</li>
+            <li>1 – PIN</li>
+            <li>2 – Electronic signature analysis</li>
+            <li>3 – Biometric</li>
+            <li>4 – Biographic</li>
+            <li>5 – Manual</li>
+            <li>6 – Others</li>
+        </ul>
+
+        <p><strong>The cardholder authentication entity (position 9) of the transaction Possible values are:</strong>
+        </p>
+        <ul>
+            <li>0 – not authenticated</li>
+            <li>1 – ICC</li>
+            <li>2 – Terminal</li>
+            <li>3 – Authorizing agent</li>
+            <li>4 – Merchant</li>
+            <li>5 – Others</li>
+        </ul>
+
+        <p><strong>The card data output capability (position 10) of the terminal. Possible values are:</strong></p>
+        <ul>
+            <li>0 – Unknown</li>
+            <li>1 – None</li>
+            <li>2 – Magnetic Stripe write</li>
+            <li>3 – ICC</li>
+        </ul>
+
+        <p><strong>The terminal output capability (position 11) of the terminal. Possible values are:</strong></p>
+        <ul>
+            <li>0 – Unknown</li>
+            <li>1 – None</li>
+            <li>2 – Printing</li>
+            <li>3 – Display</li>
+            <li>4 – Printing and display</li>
+        </ul>
+
+        <p><strong>The PIN capture capability (position 12) of the terminal.</strong></p>
+        <ul>
+            <li>0 – No PIN capture capability</li>
+            <li>1 – Device PIN capture capability unknown</li>
+            <li>4 – Four characters</li>
+            <li>5 – Five characters</li>
+            <li>6 – Six characters</li>
+            <li>7 – Seven characters</li>
+            <li>8 – Eight characters</li>
+            <li>9 – Nine characters</li>
+            <li>A – Ten characters</li>
+            <li>B – Eleven characters</li>
+            <li>C – Twelve characters</li>
+        </ul>
+
+        <p><strong>The terminal operator (position 13).</strong></p>
+        <ul>
+            <li>0 – Customer operated</li>
+            <li>1 – Card acceptor operated</li>
+        </ul>
+
+        <p><strong>Terminal Type (position 14 and 15)</strong></p>
+        <p>00 – Administrative Terminal</p>
+        <ul>
+            <li>1 – POS</li>
+            <li>2 – ATM</li>
+            <li>3 – Home Terminal</li>
+            <li>90 – E – commerce – no encryption (no authentication)</li>
+            <li>91 – E – commerce – FET/3D Secure Encryption: cardholder certificate not used (non authentication)</li>
+            <li>92 – E – commerce – FET/3D Secure Encryption: cardholder certificate used (authentication)</li>
+            <li>93 – E – commerce – FET/3D Secure Encryption: Chip Cryptography used: cardholder certificate not used</li>
+            <li>94 – E – commerce – FET/3D Secure Encryption: cardholder certificate used</li>
+            <li>95 – E – commerce – FET/3D Secure Encryption: channel encryption (SSL): cardholder certificate not used (non
+                – authentication)</li>
+            <li>96 – E – commerce – FET/3D Secure Encryption: Chip cryptography used: cardholder certificate not used</li>
+            <li>21 – Smart Phone</li>
+            <li>16 – Vending</li>
+            <li>15 – Public Utility</li>
+            <li>13 – Franchise Teller</li>
+            <li>09 – Coupon Machine</li>
+            <li>07 – Fuel Machine</li>
+        </ul>
+    </section>
+    <!-- ===================== FIELD #124 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #124 – Near Field Communication Data</h4>
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>124</td>
+                    <td>LLLLVAR</td>
+                    <td>ans…9999</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>This data element carries NFC Data. This would be transmitted to the processing system as received from POS
+            Terminal.</p>
+    </section>
+
+    <!-- ===================== FIELD #128 ===================== -->
+    <section class="container my-5">
+        <h4 class=" mb-3">Field #128 – Secondary Message Hash Value</h4>
+        <table class="table table-striped table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Field No</th>
+                    <th>Format</th>
+                    <th>Attr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>128</td>
+                    <td>AN</td>
+                    <td>64</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>This data element carries the message hash value for the message, subject to at least one other secondary
+            data element (DE65 through DE128) being included in the message. The algorithm is SHA-256.</p>
+        <p>If the message does not contain at least one other secondary data element, the hash value is placed in data
+            element DE64.</p>
+    </section>
+</div>
+  {% endblock %}

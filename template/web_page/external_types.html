@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+{% extends 'web_page/sidebar.html' %}
+    {% load static %}
+    {% block body_block %}
+
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+       
+    </style>
+<body>
+    
+    <div class="container-fluid py-5">
+
+    
+        <div class="card p-4">
+            <div class="section-header">
+                <h2>External Message Type Layouts</h2>
+            </div>
+
+            <p>CTMS uses the following codes to denote whether a data element should be present in its external message.
+            </p>
+
+            <ul class="list-group list-group-flush mb-4">
+                <li class="list-group-item"><strong>Conditional:</strong> The element is mandatory under certain
+                    conditions.</li>
+                <li class="list-group-item"><strong>Echo:</strong> In response messages, this code indicates that the
+                    response message sender must include the same value it received in the data element in the
+                    associated request message. In other words, the responder must echo back the data element if it is
+                    present in the request message.</li>
+                <li class="list-group-item"><strong>Mandatory:</strong> The element is required in the message.</li>
+                <li class="list-group-item"><strong>Optional:</strong> The element is not always required in the
+                    message.</li>
+            </ul>
+
+            <h3 class="mt-5">Authorization Request/Repeat (0100)</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped align-middle">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Bit Data</th>
+                            <th>Element Name</th>
+                            <th>Presence Indicator</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2</td>
+                            <td>Primary account number</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Processing code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Amount, transaction</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Transmission date and time</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Systems trace audit number</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>Time, local transaction</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>Date, local transaction</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>Date, expiration</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td>Merchant’s type</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>22</td>
+                            <td>POS entry mode</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>23</td>
+                            <td>Card sequence number</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>25</td>
+                            <td>POS condition code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>26</td>
+                            <td>POS PIN capture code</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>28</td>
+                            <td>Amount, transaction fee</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>32</td>
+                            <td>Acquiring institution id code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>35</td>
+                            <td>Track 2 data</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>37</td>
+                            <td>Retrieval reference number</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>40</td>
+                            <td>Service restriction code</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td>41</td>
+                            <td>Card acceptor terminal id</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>42</td>
+                            <td>Card acceptor id code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>43</td>
+                            <td>Card acceptor name/location</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>49</td>
+                            <td>Currency code, transaction</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>52</td>
+                            <td>PIN data</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>53</td>
+                            <td>Security related control information</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>54</td>
+                            <td>Additional amounts</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>55</td>
+                            <td>Integrated Circuit Card System Related Data</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>56</td>
+                            <td>Message reason code</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td>59</td>
+                            <td>Transport (echo) data</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td>60</td>
+                            <td>Payment Information</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>62</td>
+                            <td>Private Field, Management Data 1</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>123</td>
+                            <td>POS data code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>124</td>
+                            <td>Near Field Communication Data</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>128</td>
+                            <td>Secondary Message Hash Value</td>
+                            <td>Mandatory</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Authorization Request Response (0110) -->
+        <div class="card p-4 mt-5">
+            <div class="section-header">
+                <h3>Authorization Request Response (0110)</h3>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped align-middle">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Bit Data</th>
+                            <th>Element Name</th>
+                            <th>Presence Indicator</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2</td>
+                            <td>Primary account number</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Processing code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Amount, transaction</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Amount, settlement</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Systems trace audit number</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>Time, local transaction</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>Date, local transaction</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>Date, expiration</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td>Date, settlement</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td>Merchant’s type</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>22</td>
+                            <td>POS entry mode</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>23</td>
+                            <td>Card sequence number</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>25</td>
+                            <td>POS condition code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>28</td>
+                            <td>Amount, transaction fee</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>30</td>
+                            <td>Amount, transaction processing fee</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>32</td>
+                            <td>Acquiring institution id code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>33</td>
+                            <td>Forwarding institution id code</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>35</td>
+                            <td>Track 2 data</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>37</td>
+                            <td>Retrieval reference number</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>38</td>
+                            <td>Authorization id response</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>39</td>
+                            <td>Response code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>40</td>
+                            <td>Service restriction code</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>41</td>
+                            <td>Card acceptor terminal id</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td>42</td>
+                            <td>Card acceptor id code</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>43</td>
+                            <td>Card acceptor name/location</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>49</td>
+                            <td>Currency code, transaction</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>54</td>
+                            <td>Additional amounts</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>55</td>
+                            <td>Integrated Circuit Card System Related Data</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>59</td>
+                            <td>Transport (echo) data</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>60</td>
+                            <td>Payment Information</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>102</td>
+                            <td>Account identification 1</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td>103</td>
+                            <td>Account identification 2</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td>123</td>
+                            <td>POS data code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>124</td>
+                            <td>Near Field Communication Data</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>128</td>
+                            <td>Secondary Message Hash Value</td>
+                            <td>Mandatory</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Financial Request/Repeat (0200) -->
+        <div class="card p-4 mt-5">
+            <div class="section-header">
+                <h3>Financial Request/Repeat (0200)</h3>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped align-middle">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Bit Data</th>
+                            <th>Element Name</th>
+                            <th>Presence Indicator</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2</td>
+                            <td>Primary account number</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Processing code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Amount, transaction</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Amount, settlement</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Transmission date and time</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Systems trace audit number</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>Time, local transaction</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>Date, local transaction</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>Date, expiration</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td>Merchant’s type</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>22</td>
+                            <td>POS entry mode</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>23</td>
+                            <td>Card sequence number</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>25</td>
+                            <td>POS condition code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>26</td>
+                            <td>POS PIN capture code</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>28</td>
+                            <td>Amount, transaction fee</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>32</td>
+                            <td>Acquiring institution id code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>35</td>
+                            <td>Track 2 data</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>37</td>
+                            <td>Retrieval reference number</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>40</td>
+                            <td>Service restriction code</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td>41</td>
+                            <td>Card acceptor terminal id</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>42</td>
+                            <td>Card acceptor id code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>43</td>
+                            <td>Card acceptor name/location</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>49</td>
+                            <td>Currency code, transaction</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>52</td>
+                            <td>PIN data</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>53</td>
+                            <td>Security related control information</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>54</td>
+                            <td>Additional amounts</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>55</td>
+                            <td>Integrated Circuit Card System Related Data</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>56</td>
+                            <td>Message reason code</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>59</td>
+                            <td>Transport (echo) data</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td>60</td>
+                            <td>Payment Information</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>61</td>
+                            <td>Private Field, Management Data 2</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>62</td>
+                            <td>Private Field, Management Data 1</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>102</td>
+                            <td>Account identification 1</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>103</td>
+                            <td>Account identification 2</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>123</td>
+                            <td>POS data code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>124</td>
+                            <td>Near Field Communication Data</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>128</td>
+                            <td>Secondary Message Hash Value</td>
+                            <td>Mandatory</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Financial Request Response (0210) -->
+        <div class="card p-4 mt-5">
+            <div class="section-header">
+                <h3>Financial Request Response (0210)</h3>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped align-middle">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Bit Data</th>
+                            <th>Element Name</th>
+                            <th>Presence Indicator</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2</td>
+                            <td>Primary account number</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Processing code</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Amount, transaction</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Amount, settlement</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Transmission date and time</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Systems trace audit number</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>Time, local transaction</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>Date, local transaction</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>Date, expiration</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td>Merchant’s type</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>22</td>
+                            <td>POS entry mode</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>23</td>
+                            <td>Card sequence number</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>25</td>
+                            <td>POS condition code</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>26</td>
+                            <td>POS PIN capture code</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>28</td>
+                            <td>Amount, transaction fee</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>32</td>
+                            <td>Acquiring institution id code</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>35</td>
+                            <td>Track 2 data</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>37</td>
+                            <td>Retrieval reference number</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>38</td>
+                            <td>Authorization identification response</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>39</td>
+                            <td>Response code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>40</td>
+                            <td>Service restriction code</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td>41</td>
+                            <td>Card acceptor terminal id</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>42</td>
+                            <td>Card acceptor id code</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>43</td>
+                            <td>Card acceptor name/location</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>49</td>
+                            <td>Currency code, transaction</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>54</td>
+                            <td>Additional amounts</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>55</td>
+                            <td>Integrated Circuit Card System Related Data</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>56</td>
+                            <td>Message reason code</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td>59</td>
+                            <td>Transport (echo) data</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td>60</td>
+                            <td>Payment Information</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>61</td>
+                            <td>Private Field, Management Data 2</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>62</td>
+                            <td>Private Field, Management Data 1</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>102</td>
+                            <td>Account identification 1</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>103</td>
+                            <td>Account identification 2</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>123</td>
+                            <td>POS data code</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>124</td>
+                            <td>Near Field Communication Data</td>
+                            <td>Echo</td>
+                        </tr>
+                        <tr>
+                            <td>128</td>
+                            <td>Secondary Message Hash Value</td>
+                            <td>Mandatory</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Reversal Advice Response (0430) -->
+        <div class="card p-4 mt-5">
+            <div class="section-header">
+                <h3>Reversal Advice Response (0430)</h3>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped align-middle">
+                    <thead class="text-center">
+                        <tr>
+                            <th>Bit Data</th>
+                            <th>Element Name</th>
+                            <th>Presence Indicator</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2</td>
+                            <td>Primary account number</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Processing code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Amount, transaction</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Amount, settlement</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Systems trace audit number</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>Time, local transaction</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>Date, local transaction</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>Date, expiration</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td>Date, Settlement</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td>Merchant’s type</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>22</td>
+                            <td>POS entry mode</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>23</td>
+                            <td>Card sequence number</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td>25</td>
+                            <td>POS condition code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>28</td>
+                            <td>Amount, transaction fee</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>30</td>
+                            <td>Amount, transaction processing fee</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>32</td>
+                            <td>Acquiring institution id code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>33</td>
+                            <td>Forwarding institution id code</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>35</td>
+                            <td>Track 2 data</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>37</td>
+                            <td>Retrieval reference number</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>38</td>
+                            <td>Authorization id response</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>39</td>
+                            <td>Response code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>40</td>
+                            <td>Service restriction code</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>41</td>
+                            <td>Card acceptor terminal id</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td>42</td>
+                            <td>Card acceptor id code</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>43</td>
+                            <td>Card acceptor name/location</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>49</td>
+                            <td>Currency code, transaction</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>54</td>
+                            <td>Additional amounts</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>59</td>
+                            <td>Transport (echo) data</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>90</td>
+                            <td>Original data elements</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>95</td>
+                            <td>Replacement amounts</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>102</td>
+                            <td>Account identification 1</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td>103</td>
+                            <td>Account identification 2</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td>123</td>
+                            <td>POS data code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>124</td>
+                            <td>Near Field Communication Data</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>128</td>
+                            <td>Secondary Message Hash Value</td>
+                            <td>Mandatory</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Network Management (Repeat) (0800) -->
+        <div class="card p-4 mt-5">
+            <div class="section-header">
+                <h3>Network Management (Repeat) (0800)</h3>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped align-middle">
+                    <thead class="text-center">
+                        <tr>
+                            <th>Bit Data</th>
+                            <th>Element Name</th>
+                            <th>Presence Indicator</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>3</td>
+                            <td>Processing code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Transmission date and time</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Systems trace audit number</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>Time, local transaction</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>Date, local transaction</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>41</td>
+                            <td>Card acceptor terminal id</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>62</td>
+                            <td>Private, management data 1</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>63</td>
+                            <td>Private, management data 2</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>64</td>
+                            <td>Primary Message Hash Value</td>
+                            <td>Conditional</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Network Management (0810) -->
+        <div class="card p-4 mt-5">
+            <div class="section-header">
+                <h3>Network Management (0810)</h3>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped align-middle">
+                    <thead class="text-center">
+                        <tr>
+                            <th>Bit Data</th>
+                            <th>Element Name</th>
+                            <th>Presence Indicator</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>7</td>
+                            <td>Transmission date and time</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Systems trace audit number</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>Time, local transaction</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>Date, local transaction</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>39</td>
+                            <td>Response code</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>41</td>
+                            <td>Card acceptor terminal id</td>
+                            <td>Mandatory</td>
+                        </tr>
+                        <tr>
+                            <td>53</td>
+                            <td>Security related control information</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>62</td>
+                            <td>Private, management data 1</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>63</td>
+                            <td>Private, management data 2</td>
+                            <td>Conditional</td>
+                        </tr>
+                        <tr>
+                            <td>64</td>
+                            <td>Primary Message Hash Value</td>
+                            <td>Conditional</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock%}
