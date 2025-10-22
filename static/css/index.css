@@ -52,7 +52,7 @@
     background-color: transparent;
     border-right: 1px solid #dee2e6;
     color: #212529;
-    padding-top: 5.5rem;
+    padding-top: 4.0rem;
 }
 
 /* Sidebar heading */
@@ -131,4 +131,51 @@ p {
 }
 li {
   color: #000 !important;
+}
+/* 📱 Responsive Design */
+@media screen and (max-width: 992px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #dee2e6;
+        padding: 0.5rem 0;
+        text-align: center;
+        background-color: #fff;
+    }
+
+    .sidebar h4 {
+        text-align: center;
+        border-bottom: none;
+        padding: 0.5rem 0;
+    }
+
+    .sidebar a {
+        display: inline-block;
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 1.2rem;
+    }
+}
+
+/* For very small screens (mobile) */
+@media screen and (max-width: 576px) {
+    .sidebar a {
+        display: block;
+        padding: 12px;
+        text-align: center;
+    }
+
+    .main-content {
+        padding: 1rem;
+        font-size: 0.95rem;
+    }
+}
+.sidebar, .main-content {
+    transition: all 0.3s ease;
 }

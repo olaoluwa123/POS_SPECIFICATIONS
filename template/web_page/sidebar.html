@@ -4,15 +4,18 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POS Dashboard</title>
+    
     <link rel="stylesheet" href="{% static 'css/side.css' %}">
 </head>
 
 <body class="sec">
   <!-- Sidebar -->
   <div class="sidebar">
+    
     <h4>DOCUMENTATION</h4>
-    <nav class="nav-links">
+     <button class="menu-toggle">☰</button>
+
+    <nav class="nav-links menu-links">
       <a href="{% url 'pos_app:intro'%}">Introduction</a>
       <a href="{% url 'pos_app:external_types'%}">External Message Types</a>
       <a href="{% url 'pos_app:external_message_types_layouts'%}">External Message Types Layouts</a>
@@ -22,11 +25,26 @@
   </div>
 
 
+  <script>
+    const toggleButton = document.querySelector('.menu-toggle');
+    const menuLinks = document.querySelector('.menu-links');
 
+    toggleButton.addEventListener('click', () => {
+      menuLinks.classList.toggle('show');
+
+      // Change icon when opened or closed
+      if (menuLinks.classList.contains('show')) {
+        toggleButton.textContent = '✖';  // Close icon
+      } else {
+        toggleButton.textContent = '☰';  // Hamburger icon
+      }
+    });
+  </script>
     <!-- Main Content (Important: outside sidebar) -->
     <section class="main-content">
         {% block body_block %}
         {% endblock %}
     </section>
+   
 </body>
 </html>
