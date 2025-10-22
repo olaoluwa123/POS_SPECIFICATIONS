@@ -52,10 +52,9 @@
     background-color: transparent;
     border-right: 1px solid #dee2e6;
     color: #212529;
-    padding-top: 5.5rem;
+    padding-top: 4.5rem; /* ⬅️ lowered from 5.5rem to move links higher */
 }
 
-/* Sidebar heading */
 .sidebar h4 {
     text-align: left;
     font-size: 1.4rem;
@@ -65,11 +64,10 @@
     letter-spacing: 0.5px;
     text-transform: uppercase;
     padding-left: 25px;
-    border-bottom: 2px solid #dee2e6; /* ⬅️ added line */
-    padding-bottom: 0.8rem; /* spacing above line */
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 0.8rem;
 }
 
-/* Sidebar links */
 .sidebar a {
     display: block;
     color: #212529;
@@ -82,14 +80,12 @@
     margin-top: 0.5rem;
 }
 
-/* Hover effect */
 .sidebar a:hover {
     background-color: #f1f3f5;
     color: #000;
     padding-left: 30px;
 }
 
-/* Active link */
 .sidebar a.active {
     background-color: #e9ecef;
     font-weight: 600;
@@ -97,7 +93,6 @@
     padding-left: 28px;
 }
 
-/* Main content area */
 .main-content {
     margin-left: 280px;
     padding: 2rem;
@@ -107,7 +102,6 @@
 .main-content h2 {
     font-weight: 600;
 }
-
 
 
 
