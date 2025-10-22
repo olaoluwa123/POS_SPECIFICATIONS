@@ -52,7 +52,7 @@
     background-color: transparent;
     border-right: 1px solid #dee2e6;
     color: #212529;
-    padding-top: 4.5rem; /* ⬅️ lowered from 5.5rem to move links higher */
+    padding-top: 4.0rem; /* ⬅️ lowered from 5.5rem to move links higher */
 }
 
 .sidebar h4 {
